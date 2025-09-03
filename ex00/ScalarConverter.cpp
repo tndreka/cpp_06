@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 16:59:20 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 21:37:50 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,29 +173,30 @@ void ScalarConverter::convert(const std::string& str)
 	//Parse INPUT
 	Type input = parseType(str);
 
-	if(input == CHAR)
+	switch (input)
 	{
-		char c = str[0];
-		std::cout << "Char:  " << c << std::endl; 
+		case CHAR:
+			convert_ch(str[0]);
+			break;
+		// case INT:
+		// 	convert_i(str);
+		// 	break;
+		// case DOUBLE:
+		// 	convert_d(str);
+		// 	break;
+		// case FLOAT:
+		// 	convert_f(str);
+		// 	break;
+		default:
+			std::cout<< "not implemeted yet\n";
+			break;
 	}
-	else if (input == INT)
-	{
-		std::cout<<"int detected \n";
-	}
-	else if (input == FLOAT)
-	{
-		std::cout<<"float detected \n";
-	}
-	else if (input == DOUBLE)
-	{
-		std::cout<<"Double detected \n";
-	}
-	else if (input == SPECIAL_CASE)
-	{
-		std::cout<<"Special case detected \n";
-	}
-	else
-	{
-		std::cout<<"INVALID detected \n";
-	}
+}
+
+void ScalarConverter::convert_ch(char c)
+{
+	std::cout <<"char: "<< c << std::endl;
+	std::cout <<"int: "<< static_cast<int>(c) << std::endl;
+	std::cout <<"float: "<< static_cast<float>(c) << std::endl;
+	std::cout <<"double: "<< static_cast<double>(c) << std::endl;
 }
