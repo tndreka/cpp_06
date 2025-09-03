@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 21:37:50 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 21:57:37 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,9 +178,9 @@ void ScalarConverter::convert(const std::string& str)
 		case CHAR:
 			convert_ch(str[0]);
 			break;
-		// case INT:
-		// 	convert_i(str);
-		// 	break;
+		case INT:
+			convert_i(str);
+			break;
 		// case DOUBLE:
 		// 	convert_d(str);
 		// 	break;
@@ -199,4 +199,28 @@ void ScalarConverter::convert_ch(char c)
 	std::cout <<"int: "<< static_cast<int>(c) << std::endl;
 	std::cout <<"float: "<< static_cast<float>(c) << std::endl;
 	std::cout <<"double: "<< static_cast<double>(c) << std::endl;
+}
+
+void ScalarConverter::convert_i(const std::string& str)
+{
+	/*
+		Convert str int to int
+		c_str() -> since atoi requires a const char* as a param the fucntion used c_str() 
+		return a C-style string null terminated charactar array frim a C++ string
+	 */
+	int value = std::atoi(str.c_str());
+	//Value not printable
+	if (value < 0 || value > 127)
+		std::cout << "char: impossible" << std::endl;
+	//value not displayble
+	else if(value < 32 || value > 126)
+		std::cout << "char: Not displayable"<< std::endl;
+	else
+		std::cout << "char: '"<< static_cast<char>(value) << "'" << std::endl;
+	//INT
+	std::cout << "int: "<< value << std::endl;
+	//FLOAT
+	std::cout << "float: '"<< static_cast<float>(value) << ".0f"<< std::endl;
+	//DOUBLE
+	std::cout << "double: '"<< static_cast<double>(value) << ".0" << std::endl;
 }
