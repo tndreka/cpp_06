@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 16:10:11 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:23:07 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,41 @@ ScalarConverter::Type ScalarConverter::parseType(const std::string& str)
 	}
 	//Parse FLOAT
 	if(str.length() > 1 && str.back() == 'f')
-		return FLOAT;
+	{
+		std::string floatpart = str.substr(0, str.length() - 1);
+		//check empty
+		if(floatpart.empty())
+			return INVALID;
+		size_t i = 0;
+		bool dot = false;
+		bool digit = false;
+		//check sign
+		if(floatpart[0] == '+' || floatpart[0] == '-')
+		{
+			i = 1;
+			if (floatpart.length() == 1)
+				return INVALID;
+		}
+		//check digit & dot
+		for(size_t count = i; count < floatpart.length(); count++)
+		{
+			if(floatpart[count] == '.')
+			{
+				if(dot)
+					return INVALID;
+				dot = true;
+			}
+			else if(std::isdigit(floatpart[count]))
+				digit = true;
+			else
+				return INVALID;
+				
+		}
+		if(dot && digit)
+			return FLOAT;
+		else
+			return INVALID;
+	}
 	//Parse DOUBLE
 	if(str.find('.') != std::string::npos)
 		return DOUBLE;
