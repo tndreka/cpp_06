@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 16:54:02 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:59:20 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ this is the excplicit cast operator that converts expression in compile time.
 */
 ScalarConverter::Type ScalarConverter::parseType(const std::string& str)
 {
-	// Type charRes;
-	// Type intRes;
-	 Type floatRes;
-	 Type doubleRes;
+	Type intRes;
+	Type floatRes;
+	Type doubleRes;
 	//Parse SPECIAL CASES => nan, nanf, +inf, -inf, +inff, -inff, inf,inff
 	if (str == "nan" || str == "nanf" || str == "+inf" || str == "+inff" || str == "-inf" || str == "-inff" || str == "inf" || str == "inff")
 		return SPECIAL_CASE;
@@ -56,6 +55,13 @@ ScalarConverter::Type ScalarConverter::parseType(const std::string& str)
 		return CHAR;
 	}
 	//PARSE--INT
+	if((intRes = valid_i(str)) == INT)
+		return INT;
+	return INVALID;
+}
+
+ScalarConverter::Type ScalarConverter::valid_i(const std::string& str)
+{
 	if(str.length() >= 1)
 	{
 		size_t i = 0;
