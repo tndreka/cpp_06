@@ -3,8 +3,8 @@ NAME = Conversion
 CPP = c++
 
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++11
-
-SRC = main.cpp
+ 
+SRC = main.cpp ScalarConverter.cpp
 
 OBJ= $(SRC:.cpp=.o)
 
@@ -21,7 +21,7 @@ clean:
 	@rm -f $(OBJ)
 
 fclean: clean
-	@rm -f(NAME)
+	@rm -f $(NAME)
 re: fclean all
 
-.PHONY all clean fclean re
+.PHONY: all clean fclean re
