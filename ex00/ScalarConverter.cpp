@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 14:19:49 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 14:32:01 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,32 @@ ScalarConverter::Type ScalarConverter::parseType(const std::string& str)
 		std::cout << "Char has been found\n";
 		return CHAR;
 	}
-	else
+
+	//PARSE--INT
+	if(str.length() >= 1)
 	{
-		std::cout<< "IMPOSSIBLE\n";
-		return INVALID;
+		size_t i = 0;
+		//check sign
+		if(str[0] == '+' || str[0] == '-')
+		{
+			i = 1;
+			if (str.length() == 1)
+				return INVALID;
+		}
+		//check the the other digits
+		bool isInt = true;
+		for (size_t count = i; count < str.length(); count++)
+		{
+			if (!std::isdigit(str[count]))
+			{
+				isInt = false;
+				break;
+			}
+		}
+		if (isInt)
+			return INT;
 	}
+	return INVALID;
 }
 void ScalarConverter::convert(const std::string& str)
 {
@@ -63,5 +84,9 @@ void ScalarConverter::convert(const std::string& str)
 	{
 		char c = str[0];
 		std::cout << "Char:  " << c << std::endl; 
+	}
+	else if (input == INT)
+	{
+		std::cout<<"int detected \n";
 	}
 }
