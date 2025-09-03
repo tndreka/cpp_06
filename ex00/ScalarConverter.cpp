@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 14:32:01 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:10:11 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,15 @@ ScalarConverter::Type ScalarConverter::parseType(const std::string& str)
 		if (isInt)
 			return INT;
 	}
+	//Parse FLOAT
+	if(str.length() > 1 && str.back() == 'f')
+		return FLOAT;
+	//Parse DOUBLE
+	if(str.find('.') != std::string::npos)
+		return DOUBLE;
+	//Parse SPECIAL CASES => nan, nanf, +inf, -inf, +inff, -inff, inf,inff
+	if (str == "nan" || str == "nanf" || str == "+inf" || str == "+inff" || str == "-inf" || str == "-inff" || str == "inf" || str == "inff")
+		return SPECIAL_CASE;
 	return INVALID;
 }
 void ScalarConverter::convert(const std::string& str)
@@ -88,5 +97,21 @@ void ScalarConverter::convert(const std::string& str)
 	else if (input == INT)
 	{
 		std::cout<<"int detected \n";
+	}
+	else if (input == FLOAT)
+	{
+		std::cout<<"float detected \n";
+	}
+	else if (input == DOUBLE)
+	{
+		std::cout<<"Double detected \n";
+	}
+	else if (input == SPECIAL_CASE)
+	{
+		std::cout<<"Special case detected \n";
+	}
+	else
+	{
+		std::cout<<"INVALID detected \n";
 	}
 }
