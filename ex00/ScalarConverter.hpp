@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:36 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 21:39:15 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 21:58:54 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ private:
 	static Type valid_i(const std::string& str);
 	static void convert_ch(char c);
 	static void convert_i(const std::string& str);
-	// static void convert_d(const std::string& str);
+	static void convert_d(const std::string& str);
 	// static void convert_f(const std::string& str);
 public:
 	static void convert(const std::string& str);

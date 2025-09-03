@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 21:57:37 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 22:39:57 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ void ScalarConverter::convert_i(const std::string& str)
 		return a C-style string null terminated charactar array frim a C++ string
 	 */
 	int value = std::atoi(str.c_str());
-	//Value not printable
+	//Value range
 	if (value < 0 || value > 127)
 		std::cout << "char: impossible" << std::endl;
 	//value not displayble
@@ -220,7 +220,38 @@ void ScalarConverter::convert_i(const std::string& str)
 	//INT
 	std::cout << "int: "<< value << std::endl;
 	//FLOAT
-	std::cout << "float: '"<< static_cast<float>(value) << ".0f"<< std::endl;
+	std::cout << "float: "<< static_cast<float>(value) << ".0f"<< std::endl;
 	//DOUBLE
-	std::cout << "double: '"<< static_cast<double>(value) << ".0" << std::endl;
+	std::cout << "double: "<< static_cast<double>(value) << ".0" << std::endl;
+}
+
+void ScalarConverter::convert_d(const std::string& str)
+{
+	double value = std::atof(str.c_str());
+	//CHAR conversion
+	if (value < 0 || value > 127 || value != static_cast<int>(value))
+		std::cout << "char: impossible" << std::endl;
+	//value not displayble
+	else if(value < 32 || value > 126)
+		std::cout << "char: Not displayable"<< std::endl;
+	else
+		std::cout << "char: '"<< static_cast<char>(static_cast<int>(value)) << "'" << std::endl;
+	//INT
+		//check limit
+	if(value > std::numeric_limits<int>::max() || value < std::numeric_limits<int>::min())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout <<"int: "<< static_cast<int>(value) << std::endl;
+	//FLOAT
+	std::cout << "float: "<< static_cast<float>(value);
+	if(value == static_cast<int>(value) && value >= -1000000 && value < 1000000)
+		std::cout << ".0f" << std::endl;
+	else
+		std::cout << "f" << std::endl;
+	//DOUBLE
+	std::cout << "double: "<< static_cast<float>(value);
+	if(value == static_cast<int>(value) && value >= -1000000 && value < 1000000)
+		std::cout << ".0" << std::endl;
+	else
+		std::cout << std::endl;
 }
