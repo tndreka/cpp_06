@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 23:07:56 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 23:35:23 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,10 @@ void ScalarConverter::convert(const std::string& str)
 		case SPECIAL_CASE:
 			std::cout << "char: impossible" << std::endl;
 			std::cout << "int: impossible" << std::endl;
+			convert_sp(str);
+			break;
+		case INVALID:
+			std::cout << "invalid case"<<std::endl;
 	}
 }
 
@@ -194,8 +198,8 @@ void ScalarConverter::convert_ch(char c)
 {
 	std::cout <<"char: '"<< c << "'"<< std::endl;
 	std::cout <<"int: "<< static_cast<int>(c) << std::endl;
-	std::cout <<"float: "<< static_cast<float>(c) << std::endl;
-	std::cout <<"double: "<< static_cast<double>(c) << std::endl;
+	std::cout <<"float: "<< static_cast<float>(c)<< ".0f" << std::endl;
+	std::cout <<"double: "<< static_cast<double>(c) << ".0" << std::endl;
 }
 
 void ScalarConverter::convert_i(const std::string& str)
@@ -205,21 +209,32 @@ void ScalarConverter::convert_i(const std::string& str)
 		c_str() -> since atoi requires a const char* as a param the fucntion used c_str() 
 		return a C-style string null terminated charactar array frim a C++ string
 	 */
-	int value = std::atoi(str.c_str());
-	//Value range
-	if (value < 0 || value > 127)
+	long i_limit = std::atol(str.c_str());	
+	if (i_limit < INT_MIN || i_limit > INT_MAX)
+	{
 		std::cout << "char: impossible" << std::endl;
-	//value not displayble
-	else if(value < 32 || value > 126)
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return;
+	}
+	// int value = std::atoi(str.c_str());
+	//check overflow =>
+		
+	//Value range
+	if (i_limit < 0 || i_limit > 127)
+		std::cout << "char: impossible" << std::endl;
+	//i_limit not displayble
+	else if(i_limit < 32 || i_limit > 126)
 		std::cout << "char: Non displayable"<< std::endl;
 	else
-		std::cout << "char: '"<< static_cast<char>(value) << "'" << std::endl;
+		std::cout << "char: '"<< static_cast<char>(i_limit) << "'" << std::endl;
 	//INT
-	std::cout << "int: "<< value << std::endl;
+	std::cout << "int: "<< i_limit << std::endl;
 	//FLOAT
-	std::cout << "float: "<< static_cast<float>(value) << ".0f"<< std::endl;
+	std::cout << "float: "<< static_cast<float>(i_limit) << ".0f"<< std::endl;
 	//DOUBLE
-	std::cout << "double: "<< static_cast<double>(value) << ".0" << std::endl;
+	std::cout << "double: "<< static_cast<double>(i_limit) << ".0" << std::endl;
 }
 
 void ScalarConverter::convert_d(const std::string& str)
@@ -271,7 +286,7 @@ void ScalarConverter::convert_f(const std::string& str)
 	else
 		std::cout <<"int: "<< static_cast<int>(value) << std::endl;
 	//FLOAT
-	std::cout << "float: "<< static_cast<float>(value);
+	std::cout << "float: "<< value;
 	if(value == static_cast<int>(value) && value >= -1000000 && value <= 1000000)
 		std::cout << ".0f" << std::endl;
 	else
@@ -282,4 +297,38 @@ void ScalarConverter::convert_f(const std::string& str)
 		std::cout << ".0" << std::endl;
 	else
 		std::cout << std::endl;	
+}
+
+void ScalarConverter::convert_sp(const std::string& str)
+{
+	if(str == "nan")
+	{
+		std::cout << "float: nanf" <<std::endl;
+		std::cout << "double: nan" <<std::endl;
+	}
+	else if(str == "nanf")
+	{
+		std::cout << "float: nanf" <<std::endl;
+		std::cout << "double: nan" <<std::endl;
+	}
+	else if(str == "+inf" || str == "inf")
+	{
+		std::cout << "float: +inff" <<std::endl;
+		std::cout << "double: +inf" <<std::endl;
+	}
+	else if(str == "-inf")
+	{
+		std::cout << "float: -inff" <<std::endl;
+		std::cout << "double: -inf" <<std::endl;
+	}
+	else if(str == "+inff" || str == "inff")
+	{
+		std::cout << "float: +inff" <<std::endl;
+		std::cout << "double: +inf" <<std::endl;
+	}
+	else if(str == "-inff")
+	{
+		std::cout << "float: -inff" <<std::endl;
+		std::cout << "double: -inf" <<std::endl;
+	}
 }
