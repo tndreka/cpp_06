@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:01:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/03 16:23:07 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:32:18 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,35 @@ ScalarConverter::Type ScalarConverter::parseType(const std::string& str)
 	}
 	//Parse DOUBLE
 	if(str.find('.') != std::string::npos)
-		return DOUBLE;
+	{
+		size_t i = 0;
+		bool ddot = false;
+		bool ddigit = false;
+		//check sign
+		if(str[0] == '+' || str[0] == '-')
+		{
+			i = 1;
+			if (str.length() == 1)
+				return INVALID;
+		}
+		for (size_t count = i; count < str.length(); count++)
+		{
+			if (str[count] == '.')
+			{
+				if(ddot)
+					return INVALID;
+				ddot = true;
+			}
+			else if(std::isdigit(str[count]))
+				ddigit = true;
+			else
+				return INVALID;
+		}
+		if(ddot && ddigit)
+			return DOUBLE;
+		else
+			return INVALID;
+	}
 	//Parse SPECIAL CASES => nan, nanf, +inf, -inf, +inff, -inff, inf,inff
 	if (str == "nan" || str == "nanf" || str == "+inf" || str == "+inff" || str == "-inf" || str == "-inff" || str == "inf" || str == "inff")
 		return SPECIAL_CASE;
