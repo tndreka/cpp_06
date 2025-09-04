@@ -6,15 +6,19 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:23:31 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 18:50:23 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/04 19:26:09 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 Base::~Base(){}
 
 
+//Generate we use rand() to randomize the obj creation of the three classes A, B, and C
 Base* generate(void)
 {
 	int random;
@@ -27,3 +31,32 @@ Base* generate(void)
 	else
 		return new C;
 }
+
+
+/*
+	dynamic_cast
+	-> this type of casting is used to safly convert convert
+	pointer references within an inheritance hierarchy.
+	-> it is used in cases with pholymorfic_types, classes that have at leats one 
+	virtual function.
+	->
+	
+*/
+void identify(Base *p)
+{
+	if (dynamic_cast<A*>(p))
+		std::cout << "A" << std::endl;
+	else if (dynamic_cast<B*>(p))
+		std::cout << "B" << std::endl;
+	else if (dynamic_cast<C*>(p))
+		std::cout << "C" << std::endl;
+}
+
+/*
+	with refrence you need to use try and catch blocks because unlike pointters 
+	referenceses doesnt return a boolean covertible value.
+*/
+// void identify(Base &p)
+// {
+	
+// }
