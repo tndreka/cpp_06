@@ -4,7 +4,7 @@ CPP = c++
 
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++11
  
-SRC = main.cpp 
+SRC = main.cpp Base.cpp A.cpp B.cpp C.cpp
 
 OBJ= $(SRC:.cpp=.o)
 

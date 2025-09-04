@@ -6,13 +6,18 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:20:29 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 17:22:04 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:25:26 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASE_HPP
 #define BASE_HPP
 
+class Base
+{
+	public:
+		virtual	~Base();
+};
 
 
 #endif

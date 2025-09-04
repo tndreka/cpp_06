@@ -6,12 +6,21 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:21:18 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 17:22:10 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:26:36 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C_HPP
 #define C_HPP
+
+#include "Base.hpp"
+
+class C: public Base
+{
+
+public:
+	~C();
+};
 
 
 
