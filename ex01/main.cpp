@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 23:39:37 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 17:17:19 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/04 17:19:29 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int main()
 	std::cout << "The name of ptr: " << p->name << std::endl;
 	std::cout << "The id of deserialized ptr: " << ds->id << std::endl;
 	std::cout << "The name of deserialized ptr: " << ds->name << std::endl;
+	
+	delete p;
 	return 0;
 }
