@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 23:42:25 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 16:50:14 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/04 17:00:45 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ uintptr_t Serializer::serialize(Data *ptr)
 }
 
 
-// Data* Serializer::deserialize(uintptr_t raw)
-// {
-	
-// }
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data *>(raw);	
+}
