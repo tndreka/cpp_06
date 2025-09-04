@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:21:15 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 18:26:58 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:46:56 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class B: public Base
 {
 public:
-	~B();
+	~B() override;
 };
 
 
