@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:23:31 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/05 03:37:51 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/05 03:43:06 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ void identify(Base &p)
 	{
 		dynamic_cast<A&>(p);
 		std::cout << "A"<< std::endl;
+		return;
+	}	
+	catch (std::bad_cast& ){}
+	try
+	{
+		dynamic_cast<B&>(p);
+		std::cout << "B"<< std::endl;
+		return;
+	}	
+	catch (std::bad_cast& ){}
+	try
+	{
+		dynamic_cast<C&>(p);
+		std::cout << "C"<< std::endl;
 		return;
 	}	
 	catch (std::bad_cast& ){}

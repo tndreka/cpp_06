@@ -6,7 +6,7 @@
 /*   By: tndreka <tndreka@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 23:39:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/05 03:39:17 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/05 03:47:42 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ int main()
 		std::cout << std::endl;
 		identify(*obj2[i]);
 	}
-	
+	for (int i = 0; i < 6; i++)
+		delete obj2[i];
+	std::cout << "=====  Testing Generate() & reference identify & pointer identify Manualy ====" << std::endl;
+	Base *obj3;
+	obj3 = generate();
+	std::cout<< "Object generated: ";
+	identify(obj3);
+	identify(*obj3);
+	delete obj3;
 	return 0;
 }
