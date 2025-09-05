@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: tndreka <tndreka@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 23:39:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 19:29:27 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/05 03:39:17 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,15 @@ int main()
 	}
 	for (int i = 0; i < 6; i++)
 		delete obj[i];
+	std::cout << "========== Testing Generate() & reference identify ================" << std::endl;
+	Base *obj2[6];
+	for(int i = 0; i < 6; i++)
+	{
+		obj2[i] = generate();
+		std::cout << "OBJECT GENERATED " << i + 1  << ": ";
+		std::cout << std::endl;
+		identify(*obj2[i]);
+	}
+	
 	return 0;
 }

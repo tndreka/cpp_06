@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
+/*   By: tndreka <tndreka@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:23:31 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 19:26:09 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/09/05 03:37:51 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,15 @@ void identify(Base *p)
 
 /*
 	with refrence you need to use try and catch blocks because unlike pointters 
-	referenceses doesnt return a boolean covertible value.
+	referenceses doesnt return a boolean covertible value but they throw std::bad_cast execption.
 */
-// void identify(Base &p)
-// {
-	
-// }
+void identify(Base &p)
+{
+	try
+	{
+		dynamic_cast<A&>(p);
+		std::cout << "A"<< std::endl;
+		return;
+	}	
+	catch (std::bad_cast& ){}
+}
