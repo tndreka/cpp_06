@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 23:39:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 19:29:27 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/10/09 17:54:58 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ int main()
 		obj[i] = generate();
 		std::cout << "OBJECT GENERATED " << i + 1  << ": ";
 		identify(obj[i]);
+	}
+	for (int i = 0; i < 6; i++)
+		delete obj[i];
+	std::cout << "========== Testing Generate() & Reference identify ================" << std::endl;
+	for (int i = 0; i < 6; i++)
+	{
+		obj[i] = generate();
+		std::cout << "OBJECT REFERENCE " << i + 1 << ": ";
+		identify(*obj[i]); // Dereference the object 
 	}
 	for (int i = 0; i < 6; i++)
 		delete obj[i];

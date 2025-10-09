@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:23:31 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 19:26:09 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/10/09 17:45:58 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,25 @@ void identify(Base *p)
 	with refrence you need to use try and catch blocks because unlike pointters 
 	referenceses doesnt return a boolean covertible value.
 */
-// void identify(Base &p)
-// {
-	
-// }
+void identify(Base &p)
+{
+	try{
+		(void)dynamic_cast<A&>(p);
+		std::cout << "A" << std::endl;
+		return;
+	}
+	catch(std::bad_cast&) {}
+	try{
+		(void)dynamic_cast<B&>(p);
+		std::cout << "B" << std::endl;
+		return;
+	}
+	catch(std::bad_cast&) {}
+	try{
+		(void)dynamic_cast<C&>(p);
+		std::cout << "C" << std::endl;
+		return;
+	}
+	catch(std::bad_cast&) {}
+	std::cout << "Unknown type" << std::endl;	
+}
