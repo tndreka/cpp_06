@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 17:23:31 by tndreka           #+#    #+#             */
-/*   Updated: 2025/10/09 18:05:33 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:11:50 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,4 @@ void identify(Base &p)
 	}
 	catch(std::bad_cast&) {}
 	std::cout << "Unknown type" << std::endl;	
-}
-void identify(Base &p)
-{
-	try
-	{
-		dynamic_cast<A&>(p);
-		std::cout << "A"<< std::endl;
-		return;
-	}	
-	catch (std::bad_cast& ){}
-	try
-	{
-		dynamic_cast<B&>(p);
-		std::cout << "B"<< std::endl;
-		return;
-	}	
-	catch (std::bad_cast& ){}
-	try
-	{
-		dynamic_cast<C&>(p);
-		std::cout << "C"<< std::endl;
-		return;
-	}	
-	catch (std::bad_cast& ){}
 }
