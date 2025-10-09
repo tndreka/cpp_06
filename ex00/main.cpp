@@ -6,13 +6,13 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:44:04 by tndreka           #+#    #+#             */
-/*   Updated: 2025/08/09 16:52:45 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:08:12 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-
+//Static_cast
 int main(int ac, char *av[])
 {
 	if (ac == 1)

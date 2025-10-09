@@ -6,12 +6,13 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 23:39:37 by tndreka           #+#    #+#             */
-/*   Updated: 2025/09/04 17:19:29 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:08:34 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
+//reinterpret_cast<data_type>
 int main()
 {
 

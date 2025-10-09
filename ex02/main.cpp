@@ -6,7 +6,7 @@
 /*   By: tndreka < tndreka@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 23:39:47 by tndreka           #+#    #+#             */
-/*   Updated: 2025/10/09 18:04:06 by tndreka          ###   ########.fr       */
+/*   Updated: 2025/10/09 18:08:53 by tndreka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "B.hpp"
 #include "C.hpp"
 
+//dynamic_cast
 int main()
 {
 	//we set the rand generator
